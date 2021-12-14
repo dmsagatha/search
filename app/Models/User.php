@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Search;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -19,6 +20,7 @@ class User extends Authenticatable
   use HasProfilePhoto;
   use Notifiable;
   use TwoFactorAuthenticatable;
+  use Search;
 
   /**
    * The attributes that are mass assignable.
@@ -32,6 +34,12 @@ class User extends Authenticatable
     'gender',
     'phone',
     // 'role_id'
+  ];
+
+  protected $searchable = [
+      'name',
+      'email',
+      'phone',
   ];
 
   /* public function role(): BelongsTo
