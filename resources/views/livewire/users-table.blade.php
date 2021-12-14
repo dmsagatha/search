@@ -1,4 +1,8 @@
 <div>
+  <!-- 
+      Build a Live Search Box With Laravel Livewire and MySQL
+      https://www.twilio.com/blog/build-live-search-box-laravel-livewire-mysql
+  -->
   <div class="px-4 space-y-4 mt-8">
     <form method="get">
       <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" type="text" placeholder="Search Users"
@@ -10,8 +14,6 @@
           notice that $term is available as a public 
           variable, even though it's not part of the 
           data array 
-
-          https://www.twilio.com/blog/build-live-search-box-laravel-livewire-mysql
       -->
       @if ($term == "")
         <div class="text-gray-500 text-sm">
