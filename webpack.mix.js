@@ -22,7 +22,7 @@ if (mix.inProduction()) {
 }
 
 mix.browserSync({
-  proxy: "http://search.test/",
+  proxy: "http://traitSearchable.test/",
   browser: "Google Chrome",
   open: false,});
 
