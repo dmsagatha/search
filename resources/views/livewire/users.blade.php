@@ -45,6 +45,9 @@
                   {{ __('Role') }}
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs text-gray-500 uppercase tracking-wider">
+                  {{ __('Post') }}
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs text-gray-500 uppercase tracking-wider">
                   {{ __('Phone') }}
                 </th>
                 <th scope="col" class="relative px-6 py-3">
@@ -59,6 +62,11 @@
                   <td class="px-6 py-4">{{ $item->name }}</td>
                   <td class="px-6 py-4">{{ $item->email }}</td>
                   <td class="px-6 py-4">{{ $item->role->name }}</td>
+                  <td class="px-6 py-4">
+                    @foreach($item->posts as $key => $entry)
+                      {{ $entry->title }}
+                    @endforeach
+                  </td>
                   <td class="px-6 py-4 whitespace-nowrap">{{ $item->phone }}</td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <a href="#" class="text-indigo-600 hover:text-indigo-900">

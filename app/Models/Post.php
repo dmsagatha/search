@@ -17,6 +17,9 @@ class Post extends Model
     'user_id',
   ];
 
+  /**
+   * Un Post pertenece a 1 Usuario
+   */
   public function user(): BelongsTo
   {
     return $this->belongsTo(User::class);

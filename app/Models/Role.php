@@ -16,7 +16,7 @@ class Role extends Model
   ];
 
   /**
-   * Un rol puede contener 1 o muchos usuarios 
+   * Un Rol puede contener 1 o muchos Usuarios 
    */
   public function users(): HasMany
   {

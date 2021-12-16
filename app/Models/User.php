@@ -53,25 +53,28 @@ class User extends Authenticatable
   }
 
   /**
-   * Un usuario pertenece a 1 rol
+   * Un Usuario pertenece a 1 Rol
    */
   public function role(): BelongsTo
   {
     return $this->belongsTo(Role::class);
   }
 
-
-
-
-
-
-
-  /* public function posts(): HasMany
+  /**
+   * Un Usuario tiene 1 o muchos Posts
+   */
+  public function posts(): HasMany
   {
     return $this->hasMany(Post::class);
   }
+
+
+
+
+
+
   
-  protected $withCount = [
+  /* protected $withCount = [
     'role',
     'posts'
   ]; */
