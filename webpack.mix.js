@@ -22,7 +22,7 @@ if (mix.inProduction()) {
 }
 
 mix.browserSync({
-  proxy: "http://datatablesalpine.test/",
+  proxy: "http://search.test/",
   browser: "Google Chrome",
   open: false,});
 
