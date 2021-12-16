@@ -35,7 +35,7 @@ class User extends Authenticatable
     'password',
     'gender',
     'phone',
-    // 'role_id'
+    'role_id'
   ];
 
   // use Search;
@@ -49,25 +49,32 @@ class User extends Authenticatable
   // public $searchable = ['name', 'email', 'phone'];
   public static function searchable()
   {
-      return ['name', 'email', 'phone'];
+    return ['name', 'email', 'phone'];
   }
 
-
-
-
-
-
-  /* public function role(): BelongsTo
+  /**
+   * Un Usuario pertenece a 1 Rol
+   */
+  public function role(): BelongsTo
   {
     return $this->belongsTo(Role::class);
   }
 
+  /**
+   * Un Usuario tiene 1 o muchos Posts
+   */
   public function posts(): HasMany
   {
     return $this->hasMany(Post::class);
   }
+
+
+
+
+
+
   
-  protected $withCount = [
+  /* protected $withCount = [
     'role',
     'posts'
   ]; */

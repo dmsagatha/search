@@ -15,6 +15,9 @@ class Role extends Model
     'slug',
   ];
 
+  /**
+   * Un Rol puede contener 1 o muchos Usuarios 
+   */
   public function users(): HasMany
   {
     return $this->hasMany(User::class);
