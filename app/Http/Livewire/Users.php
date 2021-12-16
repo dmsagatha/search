@@ -25,4 +25,9 @@ class Users extends Component
     
     return view('livewire.users', compact('users'));
   }
+
+  public function delete(User $user)
+  {
+    $user->delete();
+  }
 }

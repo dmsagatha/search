@@ -68,14 +68,22 @@
                     @endforeach
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">{{ $item->phone }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                     <a href="#" class="text-indigo-600 hover:text-indigo-900">
                       <i class="fas fa-edit"></i>
                     </a>
                     
-                    <a href="javascript:void(0)" class="text-red-600 hover:text-red-900" wire:click="confirm('delete', {{ $item->id }})" wire:loading.attr="disabled" title="Eliminar">
-                      <i class="fas fa-trash mr-2"></i>
-                    </a>
+                    @if ($item->posts->count() === 0)
+                      <a href="#" class="text-red-600 hover:text-red-900" wire:loading.attr="disabled" title="Eliminar">
+                        <i class="fas fa-trash mr-2"></i>
+                      </a>
+                    @endif
+                
+                    {{-- @if ($item->posts->count() === 0)
+                      <a href="javascript:void(0)" class="text-red-600 hover:text-red-900" wire:click="confirm('delete', {{ $item->id }})" wire:loading.attr="disabled" title="Eliminar">
+                        <i class="fas fa-trash mr-2"></i>
+                      </a>
+                    @endif --}}
                   </td>
                 </tr>
               @endforeach
