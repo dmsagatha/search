@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use App\Traits\Search;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use App\Traits\Search;
+use App\Traits\Searchable;
+use Laravel\Sanctum\HasApiTokens;
+use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,8 @@ class User extends Authenticatable
   use HasProfilePhoto;
   use Notifiable;
   use TwoFactorAuthenticatable;
-  use Search;
+  // use Search;
+  use Searchable;
 
   /**
    * The attributes that are mass assignable.
@@ -36,11 +38,24 @@ class User extends Authenticatable
     // 'role_id'
   ];
 
-  protected $searchable = [
+  // use Search;
+  /* protected $searchable = [
       'name',
       'email',
       'phone',
-  ];
+  ]; */
+
+  // use Searchable;
+  // public $searchable = ['name', 'email', 'phone'];
+  public static function searchable()
+  {
+      return ['name', 'email', 'phone'];
+  }
+
+
+
+
+
 
   /* public function role(): BelongsTo
   {

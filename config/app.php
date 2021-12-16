@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'DataTables - Alpine Js'),
+    'name' => env('APP_NAME', 'DataTables - Searchable'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http:///datatablesalpine.test'),
+    'url' => env('APP_URL', 'http:///localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
