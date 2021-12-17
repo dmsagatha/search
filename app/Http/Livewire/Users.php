@@ -21,6 +21,7 @@ class Users extends Component
     $users = User::search($this->searchTerm, [
           'name', 'email', 'phone', 'role.name', 'posts.title'
         ])
+      ->with('role', 'posts')
       ->paginate(10);
     
     return view('livewire.users', compact('users'));
