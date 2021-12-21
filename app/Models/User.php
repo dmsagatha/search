@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use App\Traits\Search;
 use App\Traits\Searchable;
+use App\Support\Sortable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +24,7 @@ class User extends Authenticatable
   use TwoFactorAuthenticatable;
   // use Search;
   use Searchable;
+  use Sortable;
 
   /**
    * The attributes that are mass assignable.

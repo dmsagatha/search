@@ -3,6 +3,7 @@
 use App\Http\Livewire\Users;
 use App\Http\Livewire\UsersTable;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,4 +26,11 @@ Route::middleware(['auth'])->group(function () {
  */
 Route::middleware(['auth'])->group(function () {
   Route::get('/searchable', Users::class)->name('users.searchable');
+});
+
+/**
+ * https://gist.github.com/rogercbe/ccb6f29678469050057a08172736415c
+ */
+Route::middleware(['auth'])->group(function () {
+  Route::get('/trait', [UsersController::class, 'index'])->name('users.trait');
 });
