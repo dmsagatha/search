@@ -1,8 +1,34 @@
 <div>
+  <!-- 
+      Searchable trait to search in multiple columns with Laravel
+      https://echebaby.com/blog/2021-02-13-searchable-trait-to-search-in-multiple-columns-with-laravel/
+  -->
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <div class="flex items-center justify-center text-sm text-gray-500 bg-white px-4 py-6 gap-x-2 border-t border-gray-200 sm:px-6">
+            <!-- Buscar -->
+            <div class="flex-1 pr-4">
+              <div class="relative md:w-2/3">
+                <input type="search"
+                  class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                  placeholder="Buscar..." wire:model.debounce.300ms="searchTerm">
+                <div class="absolute top-0 left-0 inline-flex items-center p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                    <circle cx="10" cy="10" r="7" />
+                    <line x1="21" y1="21" x2="15" y2="15" />
+                  </svg>
+                </div>
+              </div>
+              <div wire:loading.delay class="col-12 alert alert-info">
+                {{ __('Loading...') }}
+              </div>
+            </div>
+          </div>
+
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50 text-center text-sm font-bold">
               <tr>
@@ -63,12 +89,12 @@
               @endforeach
             </tbody>
           </table>
-
-          <div class="px-4 mt-4">
-            {{$users->links()}}
-          </div>
         </div>
       </div>
     </div>
+  </div>
+  
+  <div class="px-4 mt-4">
+    {{ $users->links() }}
   </div>
 </div>
