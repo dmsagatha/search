@@ -37,7 +37,5 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
-
-        'role'                  => 'rol',
     ],
 ];

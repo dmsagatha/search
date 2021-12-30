@@ -49,7 +49,7 @@ final class UserTable extends PowerGridComponent
   {
     return User::query()
         ->join('roles', 'users.role_id', '=', 'roles.id')
-        ->select('users.*', 'roles.name as role');
+        ->select('users.*', 'roles.name as role_name');
   }
 
   /*
@@ -90,25 +90,25 @@ final class UserTable extends PowerGridComponent
         return ($model::GENDER_SELECT[$model->gender] ?? '');
       })
       ->addColumn('phone')
-      ->addColumn('role')
+      // ->addColumn('role')
+      /*** ROLE ***/
+      ->addColumn('role_id', function (User $model) {
+          return $model->role_id;
+      })
+      ->addColumn('role_name', function (User $model) {
+          return $model->role->name;
+      })
       ->addColumn('created_at_formatted', function (User $model) {
         return Carbon::parse($model->created_at)->format('d/m/Y H:i:s');
       })
       ->addColumn('updated_at_formatted', function (User $model) {
-        return Carbon::parse($model->updated_at)->format('d/m/Y H:i:s');
+        return Carbon::parse($model->updated_at)->format('d/m/Y');
       });
   }
 
-  /*
-    |--------------------------------------------------------------------------
-    |  Include Columns
-    |--------------------------------------------------------------------------
-    | Include the columns added columns, making them visible on the Table.
-    | Each column can be configured with properties, filters, actions...
-    |
-    */
-
   /**
+   * Incluir las columnas agregadas, haciéndolas visibles en la Tabla.
+   * Cada columna se puede configurar con propiedades, filtros, acciones ...
    * PowerGrid Columns.
    *
    * @return array<int, Column>
@@ -120,57 +120,60 @@ final class UserTable extends PowerGridComponent
         ->title('ID')
         ->field('id')
         ->sortable()
-        ->makeInputRange(),
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title('NAME')
+        ->title(__('Name'))
         ->field('name')
         ->sortable()
         ->searchable()
-        ->makeInputText(),
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title('EMAIL')
+        ->title(__('Email'))
         ->field('email')
         ->sortable()
         ->searchable()
-        ->makeInputText(),
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title('GENDER')
+        ->title(__('Gender'))
         ->field('gender')
         ->sortable()
         ->searchable()
-        ->makeInputText(),
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title('PHONE')
+        ->title(__('Phone'))
         ->field('phone')
         ->sortable()
         ->searchable()
-        ->makeInputText(),
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title(__('ROLE'))
-        ->field('role', 'roles.name')
+        ->title(__('Role'))
+        ->field('role_name', 'roles.name')
         ->placeholder('Role placeholder')
-        ->makeInputMultiSelect(Role::all(), 'name', 'role_id')
-        ->sortable(),
+        ->makeInputSelect(Role::all(), 'name', 'role_id', ['live-search' => true])
+        ->sortable()
+        ->headerAttribute('text-center'),
 
       Column::add()
-        ->title('CREATED AT')
+        ->title(__('Created'))
         ->field('created_at_formatted', 'created_at')
         ->searchable()
         ->sortable()
-        ->makeInputDatePicker('created_at'),
+        ->headerAttribute('text-center')
+        ->bodyAttribute('text-center'),
 
       Column::add()
-        ->title('UPDATED AT')
+        ->title(__('Updated'))
         ->field('updated_at_formatted', 'updated_at')
         ->searchable()
         ->sortable()
-        ->makeInputDatePicker('updated_at'),
-
+        ->headerAttribute('text-center')
+        ->bodyAttribute('text-center'),
+        // ->makeInputDatePicker('updated_at'),
     ];
   }
 
