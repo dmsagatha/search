@@ -14,6 +14,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     @livewireStyles
+    @powerGridStyles
     
     @stack('styles')
 
@@ -41,9 +42,11 @@
       </main>
     </div>
 
+    <!-- Scripts -->
     @stack('modals')
 
     @livewireScripts
+    @powerGridScripts
     
     @stack('scripts')
   </body>

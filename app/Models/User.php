@@ -38,6 +38,11 @@ class User extends Authenticatable
     'role_id'
   ];
 
+  const GENDER_SELECT = [
+    'male'   => 'Masculino',
+    'female' => 'Femenino',
+  ];
+
   // use Search;
   /* protected $searchable = [
       'name',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Users;
+use App\Http\Livewire\UserTable;
 use App\Http\Livewire\UsersTable;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,10 @@ Route::middleware(['auth'])->group(function () {
  */
 Route::middleware(['auth'])->group(function () {
   Route::get('/searchable', Users::class)->name('users.searchable');
+
+  /**
+   * Livewire PowerGrid: Quick Datatable Package [REVIEW]
+   * https://www.youtube.com/watch?v=Qj0GLZJzDLY
+   */
+  Route::get('/powergrid', UserTable::class)->name('users.powergrid');
 });
